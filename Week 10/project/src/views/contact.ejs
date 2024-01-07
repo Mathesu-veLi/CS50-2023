@@ -1,0 +1,42 @@
+<%- include('includes/head');%>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-8 my-4">
+      <h1 class="text-center">Contact</h1>
+      <p class="text-center lead">Create or edit your contact below</p>
+
+      <%- include('includes/messages') %>
+
+      <% if(contact._id) { %>
+      <form action="/contact/edit/<%= contact._id %>" method="post">
+        <% } else { %>
+        <form action="/contact/register" method="post">
+          <% } %>
+          <input type="hidden" name="_csrf" value=<%=csrfToken %>>
+          <input type="hidden" name="createdBy" value="<%= user.email %>">
+          <div class="mb-3">
+            <label for="nameInput" class="form-label">Name</label>
+            <input value="<%= contact.name %>" type="text" name="name" autocomplete="off" class="form-control" id="nameInput">
+          </div>
+          <div class="mb-3">
+            <label for="surnameInput" class="form-label">Surname</label>
+            <input value="<%= contact.surname %>" type="text" name="surname" autocomplete="off" class="form-control" id="surnameInput">
+          </div>
+          <div class="mb-3">
+            <label for="emailInput" class="form-label">E-mail</label>
+            <input value="<%= contact.email %>" type="email" name="email" autocomplete="off" class="form-control" id="emailInput">
+          </div>
+          <div class="mb-3">
+            <label for="telInput" class="form-label">Phone number</label>
+            <input value="<%= contact.tel %>" type="tel" name="tel" autocomplete="off" class="form-control" id="telInput">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+<%- include('includes/footer'); %>

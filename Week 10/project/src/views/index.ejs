@@ -1,0 +1,62 @@
+<%- include('includes/head');%>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-8 my-4">
+      <h1 class="text-center">Phonebook</h1>
+      <%- include('includes/messages') %>
+
+      <div class="d-grid gap-1 my-4">
+        <a class="btn btn-primary" href="/contact">Add contact</a>
+      </div>
+
+      <% if(contacts.length> 0) {%>
+      <div class="table-responsive">
+        <table class="table my-4">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Surname</th>
+              <th>Phonenumber</th>
+              <th>Email</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% contacts.forEach(contact => { %>
+              <tr>
+                <td>
+                  <%= contact.name %>
+                </td>
+                <td>
+                  <%= contact.surname %>
+                </td>
+                <td>
+                  <%= contact.tel %>
+                </td>
+                <td>
+                  <%= contact.email %>
+                </td>
+                <td>
+                  <a href="/contact/index/<%= contact._id %>" class="me-3">Edit</a>
+                  <a href="/contact/delete/<%= contact._id %>" class="text-danger">Delete</a>
+
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+          <% } else { %>
+          <h3 class="text-center my-5">There are no contacts in your phonebook</h3>
+            <% }; %>
+        </table>
+      </div>
+
+      <div class="col-lg-2"></div>
+    </div>
+  </div>
+  <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top fixed-bottom">
+      <span class="mb-3 mb-md-0 text-body-secondary">Created by: Matheus Levi (20 years old)</span>
+      <span class="ms-5 mb-3 mb-md-0 text-body-secondary">Salvador, Bahia, Brazil</span>
+  </footer>
+  <%- include('includes/footer'); %>
