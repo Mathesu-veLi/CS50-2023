@@ -1,0 +1,11 @@
+sort1 uses: Bubble Sort
+
+How do you know?: Because the real execution time of sort1 for the file sorted50000.txt was 1.6s on my machine
+
+sort2 uses: Merge Sort
+
+How do you know?: Because the real execution time of sort2 for the file sorted50000.txt was 1.4s on my machine
+
+sort3 uses: Selection Sort
+
+How do you know?: Because the real execution time of sort3 for the file sorted50000.txt was 2.9s on my machine
