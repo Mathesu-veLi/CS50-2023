@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>What is the approximate ratio of people to sheep in New Zealand?</h3>
+
+                <div id="multi-choice">
+                    <button id="incorrect">6 people per 1 sheep</button>
+                    <button id="incorrect">3 people per 1 sheep</button>
+                    <button id="correct">1 people per 5 sheep</button>
+                    <button id="incorrect">1 people per 3 sheep</button>
+                    <button id="incorrect">1 people per 6 sheep</button>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>What's the name of the teacher of the lectures?</h3>
+                <form action="post">
+                    <input type="text" autocomplete="off" placeholder="Name" name="name">
+                    <button type="submit">Check Answer</button>
+                    <p></p>
+                </form>
+            </div>
+        </div>
+        <script>
+            const verifyQuestionMultiChoice = (element, isCorrect = true) => {
+                element.addEventListener('click', () => {
+                    element.style.backgroundColor = !isCorrect ? '#ff7575' : '#7575ff';
+
+                    let p = document.querySelector("#multi-choice p");
+                    p.innerHTML = !isCorrect ? 'Incorrect' : 'Correct!';
+                })
+            }
+
+            document.querySelectorAll('#incorrect').forEach((element) => verifyQuestionMultiChoice(element, false));
+
+            let correct = document.querySelector('#correct');
+            verifyQuestionMultiChoice(correct);
+
+
+            const verifyQuestionFree = element => {
+                response = element.value.toLowerCase()
+                element.style.border = response !== "david malan" ? "1px solid #f23" : "1px solid #32f";
+                element.blur()
+
+                let p = document.querySelector("form p");
+                p.innerHTML = response !== "david malan" ? "Incorrect" : "Correct!"
+            }
+
+            responseInput = document.querySelector('input');
+            document.querySelector('form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                verifyQuestionFree(responseInput);
+            });
+        </script>
+    </body>
+</html>
